@@ -1,3 +1,4 @@
+#include <limits.h>
 #include <stdio.h>
 
 int main(void) {
@@ -13,11 +14,13 @@ int main(void) {
     printf("a + b = %d\n", a + b);
     printf("a - b = %d\n", a - b);
     printf("a * b = %d\n", a * b);
-    if (b != 0) {
+    if (b == 0) {
+        printf("Division and modulus by zero are not allowed.\n");
+    } else if (a == INT_MIN && b == -1) {
+        printf("a / b and a %% b are undefined for INT_MIN and -1 in C.\n");
+    } else {
         printf("a / b = %d\n", a / b);
         printf("a %% b = %d\n", a % b);
-    } else {
-        printf("Division and modulus by zero are not allowed.\n");
     }
 
     printf("\n--- Relational Operators ---\n");
